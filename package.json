@@ -1,0 +1,23 @@
+{
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "react": "npm:react@^0.14.0-beta3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  },
+  "devDependencies": {
+    "html-dist": "^0.1.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "scripts": {
+    "rebuildDist": "rm -rf dist/ && mkdir dist",
+    "bundle": "jspm bundle-sfx --minify app/main -o dist/app.min.js",
+    "copy" : "./node_modules/.bin/html-dist index.html --remove-all --minify --insert app.min.js -o dist/index.html",
+    "build" : "npm run rebuildDist && npm run bundle && npm run copy"
+  }
+}
